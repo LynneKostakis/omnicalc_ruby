@@ -92,7 +92,7 @@ class CalculationsController < ApplicationController
 
     @range = @maximum-@minimum
 
-    @median = @numbers[@count/2]
+    @median = @sorted_numbers[@count/2]
 
     @sum = @numbers.sum
 
@@ -104,7 +104,11 @@ class CalculationsController < ApplicationController
 
     @standard_deviation = Math.sqrt(@variance)
 
-    @mode = "Replace this string with your answer."
+    
+    @counts = @numbers.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+   @mode = @numbers.max_by { |v| @counts[v] }
+    
+    
 
     # ================================================================================
     # Your code goes above.
