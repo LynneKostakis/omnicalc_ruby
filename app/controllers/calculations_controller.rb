@@ -13,11 +13,11 @@ class CalculationsController < ApplicationController
 
     @word_count = @text.split.count
     
-    @character_count_with_spaces = "Replace this string with your answer."
+    @character_count_with_spaces = @text.length
 
-    @character_count_without_spaces = "Replace this string with your answer."
+    @character_count_without_spaces = @text.gsub(/\s+/, "").length
 
-    @occurrences = "Replace this string with your answer."
+    @occurrences = @text.gsub(/[^a-z0-9\s]/i, "").split.count(@special_word)
 
     # ================================================================================
     # Your code goes above.
@@ -38,7 +38,7 @@ class CalculationsController < ApplicationController
     # The principal value the user input is in the decimal @principal.
     # ================================================================================
 
-    @monthly_payment = "Replace this string with your answer."
+    @monthly_payment = ((@apr/100/12)*@principal)/(1-((1+(@apr/100/12))**(-@years*12)))
 
     # ================================================================================
     # Your code goes above.
@@ -60,12 +60,12 @@ class CalculationsController < ApplicationController
     #   number of seconds as a result.
     # ================================================================================
 
-    @seconds = "Replace this string with your answer."
-    @minutes = "Replace this string with your answer."
-    @hours = "Replace this string with your answer."
-    @days = "Replace this string with your answer."
-    @weeks = "Replace this string with your answer."
-    @years = "Replace this string with your answer."
+    @seconds = @ending-@starting
+    @minutes = (@ending-@starting)/60
+    @hours = ((@ending-@starting)/60)/60
+    @days = (((@ending-@starting)/60)/60)/24
+    @weeks = ((((@ending-@starting)/60)/60)/24)/7
+    @years = (((((@ending-@starting)/60)/60)/24)/7)/52
 
     # ================================================================================
     # Your code goes above.
