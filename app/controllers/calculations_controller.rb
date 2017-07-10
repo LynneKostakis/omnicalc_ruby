@@ -98,9 +98,11 @@ class CalculationsController < ApplicationController
 
     @mean = @sum/@count
 
-    @variance = (((@numbers[0]-@mean)**2)+((@numbers[1]-@mean)**2)+((@numbers[2]-@mean)**2))/@count
+    @variance = 0
+    @numbers.each { |a| @variance += (a-@mean)**2 }
+    @variance /= @count
 
-    @standard_deviation = "Replace this string with your answer."
+    @standard_deviation = Math.sqrt(@variance)
 
     @mode = "Replace this string with your answer."
 
