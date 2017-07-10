@@ -61,7 +61,7 @@ class CalculationsController < ApplicationController
     # ================================================================================
 
     @seconds = @ending-@starting
-    @minutes = "Replace this string with your answer."
+    @minutes = (@ending-@starting)/60
     @hours = "Replace this string with your answer."
     @days = "Replace this string with your answer."
     @weeks = "Replace this string with your answer."
