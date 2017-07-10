@@ -90,15 +90,15 @@ class CalculationsController < ApplicationController
 
     @maximum = @numbers.max
 
-    @range = @numbers.max-@numbers.min
+    @range = @maximum-@minimum
 
-    @median = @numbers[@numbers.count/2]
+    @median = @numbers[@count/2]
 
     @sum = @numbers.sum
 
-    @mean = @numbers.sum/@numbers.count
+    @mean = @sum/@count
 
-    @variance = "Replace this string with your answer."
+    @variance = (((@numbers[0]-@mean)**2)+((@numbers[1]-@mean)**2)+((@numbers[2]-@mean)**2))/@count
 
     @standard_deviation = "Replace this string with your answer."
 
