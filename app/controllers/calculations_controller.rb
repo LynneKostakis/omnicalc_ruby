@@ -93,7 +93,7 @@ class CalculationsController < ApplicationController
     @range = @maximum-@minimum
 
 if @count.even?
-  @median = (@sorted_numbers[@count/2]+@sorted_numbers[@count/2+1])/2
+  @median = (@sorted_numbers[@count/2]+@sorted_numbers[@count/2-1])/2
 else
     @median = @sorted_numbers[@count/2]
 end    
